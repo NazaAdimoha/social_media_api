@@ -1,0 +1,19 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose = require("mongoose");
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+            //   useCreateIndex:true
+        });
+        console.log(`Mongo DB Connected: ${conn.connection.host}`);
+    }
+    catch (error) {
+        console.error(`Error: ${error}`);
+        process.exit(1);
+    }
+};
+exports.default = connectDB;
+//# sourceMappingURL=db.js.map
